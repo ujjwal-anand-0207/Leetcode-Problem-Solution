@@ -1,17 +1,17 @@
 class Solution {
 public:
     int mySqrt(int x) {
-       int count=0;
-        int i=1;
-        while(x>0)
+        int l=0,r=x;
+        while(l<=r)
         {
-            x=x-i;
-            i+=2;
-            count++;
+            long long mid=l+(r-l)/2;
+            if(mid*mid==x)
+                return mid;
+            else if(mid*mid>x)
+                r=mid-1;
+            else
+                l=mid+1;
         }
-        if(x==0)
-            return count;
-        else 
-            return count-1;
+        return r;
     }
 };
